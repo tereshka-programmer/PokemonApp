@@ -1,6 +1,5 @@
 package com.example.pokemontestapp.di
 
-import com.example.pokemontestapp.data.network.SourceProviderHolder
 import com.example.pokemontestapp.utils.Constants
 import com.squareup.moshi.Moshi
 import dagger.Module
