@@ -4,8 +4,11 @@ import com.example.pokemontestapp.data.network.base.BaseRetrofitSource
 import com.example.pokemontestapp.data.network.base.RetrofitConfig
 import com.example.pokemontestapp.data.network.pokemons.entities.PokemonDetailsResponse
 import com.example.pokemontestapp.data.network.pokemons.entities.PokemonsResponse
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RetrofitPokemonsSource(
+@Singleton
+class RetrofitPokemonsSource @Inject constructor(
     config: RetrofitConfig
 ) : BaseRetrofitSource(config), PokemonsSource{
 
