@@ -1,6 +1,8 @@
 package com.example.pokemontestapp.data.network.pokemons.entities
 
 import com.example.pokemontestapp.domain.entities.Pokemon
+import com.example.pokemontestapp.utils.Constants
+import com.example.pokemontestapp.utils.Constants.URL_SIZE
 
 data class PokemonsResponse(
     val next: String,
@@ -15,7 +17,7 @@ data class PokemonsResponse(
     }
 
     private fun getIdFromLink(link: String): Long {
-        val id = link.drop(34).dropLast(1)
+        val id = link.drop(URL_SIZE).dropLast(1)
         return id.toLong()
     }
 }
