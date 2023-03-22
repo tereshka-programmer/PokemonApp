@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PokemonTestApp</string>
+    <string name="connection_error">Connection is lost</string>
+    <string name="internal_error">Internal error! Please try again later.</string>
+    <string name="try_again">Try again</string>
+    <string name="load_error">Load error</string>
 </resources>

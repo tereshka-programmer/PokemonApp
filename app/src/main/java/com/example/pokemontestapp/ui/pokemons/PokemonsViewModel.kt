@@ -1,12 +1,22 @@
 package com.example.pokemontestapp.ui.pokemons
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.pokemontestapp.domain.entities.Pokemon
 import com.example.pokemontestapp.domain.repository.PokemonsRepository
+import com.example.pokemontestapp.ui.base.BaseViewModel
+import com.example.pokemontestapp.utils.share
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PokemonsViewModel(
+@HiltViewModel
+class PokemonsViewModel @Inject constructor(
     private val pokemonsRepository: PokemonsRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
-
+    val pokemonsFlow: Flow<PagingData<Pokemon>> = pokemonsRepository.getPokemons().cachedIn(viewModelScope)
 
 }

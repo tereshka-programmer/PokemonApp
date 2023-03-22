@@ -14,8 +14,8 @@ class RetrofitPokemonsSource @Inject constructor(
 
     private val pokemonsApi = retrofit.create(PokemonsApi::class.java)
 
-    override suspend fun getPokemons(): PokemonsResponse = wrapRetrofitExceptions {
-        pokemonsApi.getPokemons()
+    override suspend fun getPokemons(offset: Int, limit: Int): PokemonsResponse = wrapRetrofitExceptions {
+        pokemonsApi.getPokemons(offset, limit)
     }
 
     override suspend fun getPokemonDetails(pokemonId: Long): PokemonDetailsResponse = wrapRetrofitExceptions{

@@ -5,7 +5,7 @@ import com.example.pokemontestapp.data.network.pokemons.entities.PokemonsRespons
 
 interface PokemonsSource {
 
-    suspend fun getPokemons(): PokemonsResponse
+    suspend fun getPokemons(offset: Int, limit: Int): PokemonsResponse
 
     suspend fun getPokemonDetails(pokemonId: Long): PokemonDetailsResponse
 }
