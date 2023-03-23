@@ -13,11 +13,11 @@ class RoomPokemonsSourceImpl @Inject constructor(
     private val pokemonDetailsDao: PokemonDetailsDao
 ): RoomPokemonsSource {
 
-    override suspend fun getPokemonDetailsEntity(id: Long): PokemonDetailsDbEntity = wrapSQLiteException(Dispatchers.IO) {
-        pokemonDetailsDao.getPokemonDetailById(id)
+    override suspend fun getPokemonDetailsEntity(id: Long): PokemonDetailsDbEntity  {
+        return pokemonDetailsDao.getPokemonDetailById(id)
     }
 
-    override suspend fun insertPokemonDetailsEntity(pokemonDetailsDbEntity: PokemonDetailsDbEntity) = wrapSQLiteException(Dispatchers.IO){
+    override suspend fun insertPokemonDetailsEntity(pokemonDetailsDbEntity: PokemonDetailsDbEntity) {
         pokemonDetailsDao.savePokemonDetails(pokemonDetailsDbEntity)
     }
 }

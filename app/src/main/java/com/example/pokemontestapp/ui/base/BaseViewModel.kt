@@ -13,24 +13,24 @@ import kotlinx.coroutines.launch
 
 open class BaseViewModel(): ViewModel() {
 
-    private val _showErrorMessageResEvent = MutableLiveEvent<Int>()
-    val showErrorMessageResEvent = _showErrorMessageResEvent.share()
-
-    private val _showErrorMessageEvent = MutableLiveEvent<String>()
-    val showErrorMessageEvent = _showErrorMessageEvent.share()
-
-    fun CoroutineScope.safeLaunch(block: suspend CoroutineScope.() -> Unit) {
-        viewModelScope.launch {
-            try {
-                block.invoke(this)
-            } catch (e: ConnectionException) {
-                _showErrorMessageResEvent.publishEvent(R.string.connection_error)
-            } catch (e: BackendException) {
-                _showErrorMessageEvent.publishEvent("Error: ${e.code}")
-            } catch (e: Exception) {
-                _showErrorMessageResEvent.publishEvent(R.string.internal_error)
-            }
-        }
-    }
+//    private val _showErrorMessageResEvent = MutableLiveEvent<Int>()
+//    val showErrorMessageResEvent = _showErrorMessageResEvent.share()
+//
+//    private val _showErrorMessageEvent = MutableLiveEvent<String>()
+//    val showErrorMessageEvent = _showErrorMessageEvent.share()
+//
+//    fun CoroutineScope.safeLaunch(block: suspend CoroutineScope.() -> Unit) {
+//        viewModelScope.launch {
+//            try {
+//                block.invoke(this)
+//            } catch (e: ConnectionException) {
+//                _showErrorMessageResEvent.publishEvent(R.string.connection_error)
+//            } catch (e: BackendException) {
+//                _showErrorMessageEvent.publishEvent("Error: ${e.code}")
+//            } catch (e: Exception) {
+//                _showErrorMessageResEvent.publishEvent(R.string.internal_error)
+//            }
+//        }
+//    }
 
 }

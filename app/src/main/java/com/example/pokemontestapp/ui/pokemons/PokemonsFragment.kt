@@ -1,20 +1,16 @@
 package com.example.pokemontestapp.ui.pokemons
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
-import androidx.paging.LoadStates
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokemontestapp.R
 import com.example.pokemontestapp.databinding.FragmentPokemonsBinding
 import com.example.pokemontestapp.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -28,13 +24,15 @@ class PokemonsFragment() : BaseFragment(R.layout.fragment_pokemons) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPokemonsBinding.bind(view)
 
-        Log.d("TEST", "just created pokemon's fragment")
-
         setupPokemonsList()
     }
 
     private fun setupPokemonsList() {
-        val adapter = PokemonsAdapter()
+        val adapter = PokemonsAdapter( object : OnItemClickListener {
+            override fun navigateToPokemonDetails(id: Long) {
+                navigateToDetails(id)
+            }
+        })
         val tryAgainAction: TryAgainAction = { adapter.retry() }
         val footerAdapter = DefaultLoadStateAdapter(tryAgainAction)
         val adapterWithLoadState = adapter.withLoadStateFooter(footerAdapter)
@@ -53,12 +51,9 @@ class PokemonsFragment() : BaseFragment(R.layout.fragment_pokemons) {
         }
     }
 
-//    private fun observeLoadState(adapter: PokemonsAdapter) {
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            adapter.loadStateFlow.debounce(200).collectLatest { state ->
-//
-//            }
-//        }
-//    }
+    private fun navigateToDetails(pokemonId: Long) {
+        val direction = PokemonsFragmentDirections.actionPokemonsFragmentToPokemonDetailsFragment(pokemonId)
+        findNavController().navigate(direction)
+    }
 
 }

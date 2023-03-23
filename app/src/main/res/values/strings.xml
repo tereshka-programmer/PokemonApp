@@ -4,4 +4,7 @@
     <string name="internal_error">Internal error! Please try again later.</string>
     <string name="try_again">Try again</string>
     <string name="load_error">Load error</string>
+    <string name="pokemon">Pokemon</string>
+    <string name="types">Types:</string>
+    <string name="storage_error">This pokemon is no in your cache</string>
 </resources>

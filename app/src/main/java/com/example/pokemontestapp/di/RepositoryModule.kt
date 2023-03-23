@@ -1,7 +1,9 @@
 package com.example.pokemontestapp.di
 
 import androidx.paging.ExperimentalPagingApi
+import com.example.pokemontestapp.data.repositoryImpl.PokemonsLocalRepositoryImpl
 import com.example.pokemontestapp.data.repositoryImpl.PokemonsRepositoryImpl
+import com.example.pokemontestapp.domain.repository.PokemonsLocalRepository
 import com.example.pokemontestapp.domain.repository.PokemonsRepository
 import dagger.Binds
 import dagger.Module
@@ -18,4 +20,8 @@ abstract class RepositoryModule {
         pokemonsRepositoryImpl: PokemonsRepositoryImpl
     ) : PokemonsRepository
 
+    @Binds
+    abstract fun bindLocalPokemonRepository(
+        pokemonsLocalRepositoryImpl: PokemonsLocalRepositoryImpl
+    ) : PokemonsLocalRepository
 }

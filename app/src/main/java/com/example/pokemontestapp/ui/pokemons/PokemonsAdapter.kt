@@ -1,6 +1,7 @@
 package com.example.pokemontestapp.ui.pokemons
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -8,11 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemontestapp.databinding.ItemPokemonBinding
 import com.example.pokemontestapp.domain.entities.Pokemon
 
-class PokemonsAdapter(): PagingDataAdapter<Pokemon, PokemonsAdapter.PokemonsViewHolder>(PokemonsDiffCallback()) {
+interface OnItemClickListener {
+
+    fun navigateToPokemonDetails(id: Long)
+
+}
+
+class PokemonsAdapter(
+    private val listener: OnItemClickListener
+): PagingDataAdapter<Pokemon, PokemonsAdapter.PokemonsViewHolder>(PokemonsDiffCallback()), View.OnClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemPokemonBinding.inflate(inflater, parent, false)
+
+        binding.root.setOnClickListener(this)
 
         return PokemonsViewHolder(binding)
     }
@@ -29,6 +40,11 @@ class PokemonsAdapter(): PagingDataAdapter<Pokemon, PokemonsAdapter.PokemonsView
     class PokemonsViewHolder(
         val binding: ItemPokemonBinding
     ) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onClick(view: View?) {
+        val pokemon = view?.tag as Pokemon
+        listener.navigateToPokemonDetails(pokemon.id)
+    }
 }
 
 // ---

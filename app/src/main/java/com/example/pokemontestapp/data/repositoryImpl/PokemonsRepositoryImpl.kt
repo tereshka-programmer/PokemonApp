@@ -5,6 +5,8 @@ import com.example.pokemontestapp.data.network.PokemonRemoteMediator
 import com.example.pokemontestapp.data.network.PokemonsPagingSource
 import com.example.pokemontestapp.data.network.pokemons.PokemonsSource
 import com.example.pokemontestapp.data.room.pokemons.PokemonDao
+import com.example.pokemontestapp.data.room.pokemons.PokemonDetailsDao
+import com.example.pokemontestapp.data.room.pokemons.entities.PokemonDetailsDbEntity
 import com.example.pokemontestapp.domain.entities.Pokemon
 import com.example.pokemontestapp.domain.entities.PokemonDetails
 import com.example.pokemontestapp.domain.repository.PokemonsRepository
@@ -19,7 +21,8 @@ import javax.inject.Singleton
 class PokemonsRepositoryImpl @Inject constructor(
     private val pokemonsSource: PokemonsSource,
     private val remoteMediatorFactory: PokemonRemoteMediator.Factory,
-    private val pokemonDao: PokemonDao
+    private val pokemonDao: PokemonDao,
+    private val pokemonDetailsDao: PokemonDetailsDao
 ): PokemonsRepository{
 
     override fun getPokemons(): Flow<PagingData<Pokemon>> {
@@ -39,7 +42,16 @@ class PokemonsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getPokemonDetails(id: Long): PokemonDetails {
-        return pokemonsSource.getPokemonDetails(id).toPokemonDetails()
+        val details = pokemonsSource.getPokemonDetails(id).toPokemonDetails()
+        pokemonDetailsDao.savePokemonDetails(PokemonDetailsDbEntity(
+            id = details.id,
+            name = details.name,
+            height = details.height,
+            weight = details.weight,
+            image = details.imageUrl,
+            types = details.types
+        ))
+        return details
     }
 
 }
