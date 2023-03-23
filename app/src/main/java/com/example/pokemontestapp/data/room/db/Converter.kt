@@ -5,11 +5,11 @@ import androidx.room.TypeConverter
 class Converter {
     @TypeConverter
     fun fromTypesList(value: List<String>): String {
-        return value.joinToString { "," }
+        return value.joinToString(",")
     }
 
     @TypeConverter
     fun toTypesList(value: String): List<String> {
-        return value.split(",")
+        return value.split(',')
     }
 }

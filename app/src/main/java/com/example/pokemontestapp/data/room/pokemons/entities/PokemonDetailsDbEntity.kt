@@ -2,6 +2,8 @@ package com.example.pokemontestapp.data.room.pokemons.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.pokemontestapp.data.room.db.Converter
 import com.example.pokemontestapp.domain.entities.PokemonDetails
 
 @Entity(
@@ -13,6 +15,7 @@ data class PokemonDetailsDbEntity(
     val height: Int,
     val weight: Int,
     val image: String,
+    @TypeConverters(Converter::class)
     val types: List<String>
 ) {
     fun toPokemonDetails(): PokemonDetails = PokemonDetails(
