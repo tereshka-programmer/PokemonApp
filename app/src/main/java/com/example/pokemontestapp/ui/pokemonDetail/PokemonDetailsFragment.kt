@@ -27,6 +27,8 @@ class PokemonDetailsFragment() : Fragment(R.layout.fragment_pokemon_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPokemonDetailsBinding.bind(view)
 
+        binding.btBack.setOnClickListener { findNavController().navigateUp() }
+
         viewModel.getPokemonDetails(args.pokemonId)
 
         observeErrors()
@@ -47,8 +49,10 @@ class PokemonDetailsFragment() : Fragment(R.layout.fragment_pokemon_details) {
             .into(binding.imageView)
 
         binding.tvName.text = pokemonDetails.name
-        binding.tvHeight.text = "Height: ${pokemonDetails.height}"
-        binding.tvWeight.text = "Weight: ${pokemonDetails.weight}"
+        binding.tvHeight.text =
+            requireContext().getString(R.string.height, pokemonDetails.height.toString())
+        binding.tvWeight.text =
+            requireContext().getString(R.string.weight, pokemonDetails.weight.toString())
         binding.tvTypesResult.text = pokemonDetails.types.toString()
     }
 

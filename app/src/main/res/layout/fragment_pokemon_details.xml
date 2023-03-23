@@ -74,4 +74,15 @@
         app:layout_constraintStart_toStartOf="@+id/tvTypes"
         app:layout_constraintTop_toBottomOf="@+id/tvTypes"
         tools:text="weight" />
+
+    <ImageView
+        android:id="@+id/btBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_margin="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

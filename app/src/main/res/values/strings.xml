@@ -7,4 +7,6 @@
     <string name="pokemon">Pokemon</string>
     <string name="types">Types:</string>
     <string name="storage_error">This pokemon is no in your cache</string>
+    <string name="weight">Weight: %1$s</string>
+    <string name="height">Height: %1$s</string>
 </resources>
