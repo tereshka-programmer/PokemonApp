@@ -1,5 +1,6 @@
 package com.example.pokemontestapp.data.network.pokemons.entities
 
+import com.example.pokemontestapp.data.room.pokemons.entities.PokemonDbEntity
 import com.example.pokemontestapp.domain.entities.Pokemon
 import com.example.pokemontestapp.utils.Constants
 import com.example.pokemontestapp.utils.Constants.URL_SIZE
@@ -9,6 +10,13 @@ data class PokemonsResponse(
     val previous: String?,
     val results: List<Result>
 ) {
+
+    fun toPokemonDbEntityList(): List<PokemonDbEntity> = results.map {
+        PokemonDbEntity(
+            id = getIdFromLink(it.url),
+            name = it.name
+        )
+    }
     fun toPokemonsList(): List<Pokemon> = results.map {
         Pokemon(
             id = getIdFromLink(it.url),

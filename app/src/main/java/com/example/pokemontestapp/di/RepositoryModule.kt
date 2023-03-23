@@ -1,5 +1,6 @@
 package com.example.pokemontestapp.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.example.pokemontestapp.data.repositoryImpl.PokemonsRepositoryImpl
 import com.example.pokemontestapp.domain.repository.PokemonsRepository
 import dagger.Binds
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
+    @ExperimentalPagingApi
     @Binds
     abstract fun bindPokemonsRepository(
         pokemonsRepositoryImpl: PokemonsRepositoryImpl
