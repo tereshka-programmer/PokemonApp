@@ -15,5 +15,3 @@ open class BackendException(
 class ParseBackendResponseException(
     cause: Throwable
 ) : AppException(cause = cause)
-
-class StorageException: AppException()

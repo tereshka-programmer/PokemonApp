@@ -2,23 +2,23 @@ package com.example.pokemontestapp.ui.pokemons
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokemontestapp.R
 import com.example.pokemontestapp.databinding.FragmentPokemonsBinding
-import com.example.pokemontestapp.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PokemonsFragment() : BaseFragment(R.layout.fragment_pokemons) {
+class PokemonsFragment() : Fragment(R.layout.fragment_pokemons) {
 
     private lateinit var binding: FragmentPokemonsBinding
 
-    override val viewModel by viewModels<PokemonsViewModel>()
+    private val viewModel by viewModels<PokemonsViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

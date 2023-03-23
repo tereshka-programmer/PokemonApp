@@ -2,7 +2,6 @@ package com.example.pokemontestapp.data.network.pokemons.entities
 
 import com.example.pokemontestapp.data.room.pokemons.entities.PokemonDbEntity
 import com.example.pokemontestapp.domain.entities.Pokemon
-import com.example.pokemontestapp.utils.Constants
 import com.example.pokemontestapp.utils.Constants.URL_SIZE
 
 data class PokemonsResponse(

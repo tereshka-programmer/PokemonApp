@@ -2,7 +2,6 @@ package com.example.pokemontestapp.data.repositoryImpl
 
 import androidx.paging.*
 import com.example.pokemontestapp.data.network.PokemonRemoteMediator
-import com.example.pokemontestapp.data.network.PokemonsPagingSource
 import com.example.pokemontestapp.data.network.pokemons.PokemonsSource
 import com.example.pokemontestapp.data.room.pokemons.PokemonDao
 import com.example.pokemontestapp.data.room.pokemons.PokemonDetailsDao

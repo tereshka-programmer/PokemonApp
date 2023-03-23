@@ -1,6 +1,7 @@
 package com.example.pokemontestapp.ui.pokemonDetail
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemontestapp.R
 import com.example.pokemontestapp.data.network.base.BackendException
@@ -8,7 +9,6 @@ import com.example.pokemontestapp.data.network.base.ConnectionException
 import com.example.pokemontestapp.domain.entities.PokemonDetails
 import com.example.pokemontestapp.domain.repository.PokemonsLocalRepository
 import com.example.pokemontestapp.domain.repository.PokemonsRepository
-import com.example.pokemontestapp.ui.base.BaseViewModel
 import com.example.pokemontestapp.utils.MutableLiveEvent
 import com.example.pokemontestapp.utils.MutableUnitLiveEvent
 import com.example.pokemontestapp.utils.publishEvent
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class PokemonDetailsViewModel @Inject constructor(
     private val pokemonsRepository: PokemonsRepository,
     private val pokemonsLocalRepository: PokemonsLocalRepository
-): BaseViewModel(){
+): ViewModel(){
 
     private val _navigateUpAction = MutableUnitLiveEvent()
     val navigationUpAction = _navigateUpAction.share()

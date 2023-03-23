@@ -2,7 +2,6 @@ package com.example.pokemontestapp.data.room.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.example.pokemontestapp.data.room.pokemons.PokemonDao
 import com.example.pokemontestapp.data.room.pokemons.PokemonDetailsDao

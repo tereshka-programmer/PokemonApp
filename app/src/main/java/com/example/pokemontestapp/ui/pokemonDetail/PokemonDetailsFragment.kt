@@ -12,15 +12,14 @@ import com.bumptech.glide.Glide
 import com.example.pokemontestapp.R
 import com.example.pokemontestapp.databinding.FragmentPokemonDetailsBinding
 import com.example.pokemontestapp.domain.entities.PokemonDetails
-import com.example.pokemontestapp.ui.base.BaseFragment
 import com.example.pokemontestapp.utils.observeEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PokemonDetailsFragment() : BaseFragment(R.layout.fragment_pokemon_details) {
+class PokemonDetailsFragment() : Fragment(R.layout.fragment_pokemon_details) {
 
     private lateinit var binding: FragmentPokemonDetailsBinding
-    override val viewModel by viewModels<PokemonDetailsViewModel>()
+    private val viewModel by viewModels<PokemonDetailsViewModel>()
 
     val args: PokemonDetailsFragmentArgs by navArgs()
 

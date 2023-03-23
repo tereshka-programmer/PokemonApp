@@ -2,8 +2,8 @@ package com.example.pokemontestapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.pokemontestapp.data.room.pokemons.PokemonDao
 import com.example.pokemontestapp.data.room.db.AppDatabase
+import com.example.pokemontestapp.data.room.pokemons.PokemonDao
 import com.example.pokemontestapp.data.room.pokemons.PokemonDetailsDao
 import dagger.Module
 import dagger.Provides

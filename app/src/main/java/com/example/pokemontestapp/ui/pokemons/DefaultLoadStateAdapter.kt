@@ -2,7 +2,6 @@ package com.example.pokemontestapp.ui.pokemons
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
@@ -29,11 +28,6 @@ class DefaultLoadStateAdapter(
         return Holder(binding, null, tryAgainAction)
     }
 
-    /**
-     * The same layout is used for:
-     * - footer
-     * - main indicator
-     */
     class Holder(
         private val binding: PartDefaultLoadStateBinding,
         private val swipeRefreshLayout: SwipeRefreshLayout?,

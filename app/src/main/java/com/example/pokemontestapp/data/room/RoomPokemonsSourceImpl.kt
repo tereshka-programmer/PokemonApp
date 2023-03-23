@@ -1,10 +1,8 @@
 package com.example.pokemontestapp.data.room
 
-import com.example.pokemontestapp.data.room.db.wrapSQLiteException
 import com.example.pokemontestapp.data.room.pokemons.PokemonDetailsDao
 import com.example.pokemontestapp.data.room.pokemons.RoomPokemonsSource
 import com.example.pokemontestapp.data.room.pokemons.entities.PokemonDetailsDbEntity
-import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 import javax.inject.Singleton
 
